@@ -1,31 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, FlatList, Text, View } from 'react-native';
-import logo from './assets/logo.png'; 
+import React from 'react';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export default function App() {
-  const [isLoading, setLoading] = useState(true);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    fetch('https://jsonplaceholder.cypress.io/users')
-      .then((response) => response.json())
-      .then((json) => setData(json))
-      .catch((error) => console.error(error))
-      .finally(() => setLoading(false));
-  }, []);
-
   return (
-    <View style={{ flex: 1, padding: 24 }}>
-      {isLoading ? <ActivityIndicator testID="loading"/> : (
-        <FlatList
-          accessibilityLabel="users"
-          data={data}
-          keyExtractor={({ id }, index) => String(id)}
-          renderItem={({ item }) => (
-            <Text testID="user" accessibilityLabel="user">{item.name}, {item.email}</Text>
-          )}
-        />
-      )}
+    <View style={styles.container}>
+      <Image testID="image" source={{ uri: "https://i.imgur.com/TkIrScD.png" }} style={styles.logo} />
+
+      <Text style={styles.instructions} >
+        To share a photo from your phone with a friend, just press the button below!
+      </Text>
+
+      <TouchableOpacity testID='button' onPress={() => alert('Hello, world!')} style={styles.button}>
+        <Text style={styles.buttonText}>Pick a photo</Text>
+      </TouchableOpacity>
+      
     </View>
   );
-};
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  logo: {
+    width: 305,
+    height: 159,
+    marginBottom: 10,
+  },
+  instructions: {
+    color: '#888',
+    fontSize: 18,
+    marginHorizontal: 15,
+  },
+  button: {
+    backgroundColor: "blue",
+    padding: 20,
+    borderRadius: 5,
+  },
+  buttonText: {
+    fontSize: 20,
+    color: '#fff',
+  }, 
+});

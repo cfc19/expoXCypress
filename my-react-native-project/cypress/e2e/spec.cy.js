@@ -1,10 +1,12 @@
+// Works with AppGuide.js 
+
 describe('First web test on the app', () => {
   beforeEach(()=> {
     cy.visit('http://localhost:19006')
   })
   it.skip('works', () => {
     // cy.visit('http://localhost:19006')
-    cy.contains('Open up App.js to start working on your app!')
+    cy.contains('To share a photo from your phone with a friend, just press the button below!')
       .should('be.visible')
   })
 
