@@ -1,6 +1,6 @@
 describe('First web test on the app', () => {
     beforeEach(()=> {
-      cy.visit('http://localhost:19006')
+      cy.visit('/')
     })
     it('works', () => {
       // cy.visit('http://localhost:19006')

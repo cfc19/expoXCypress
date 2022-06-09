@@ -1,6 +1,6 @@
 // Works with AppGuide.js 
 
-describe('First web test on the app', () => {
+describe.skip('First web test on the app', () => {
   beforeEach(()=> {
     cy.visit('http://localhost:19006')
   })
